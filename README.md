@@ -1,6 +1,5 @@
 # XiaoZhi AI Chatbot
 
-(| English | [日本語](README_ja.md))
 
 ## Introduction
 
