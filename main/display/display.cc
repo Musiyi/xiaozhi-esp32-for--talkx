@@ -7,7 +7,6 @@
 #include "display.h"
 #include "board.h"
 #include "application.h"
-#include "font_awesome_symbols.h"
 #include "audio_codec.h"
 #include "settings.h"
 #include "assets/lang_config.h"
@@ -198,30 +197,6 @@ void Display::SetEmotion(const char* emotion) {
         const char* icon;
         const char* text;
     };
-
-    static const std::vector<Emotion> emotions = {
-        {FONT_AWESOME_EMOJI_NEUTRAL, "neutral"},
-        {FONT_AWESOME_EMOJI_HAPPY, "happy"},
-        {FONT_AWESOME_EMOJI_LAUGHING, "laughing"},
-        {FONT_AWESOME_EMOJI_FUNNY, "funny"},
-        {FONT_AWESOME_EMOJI_SAD, "sad"},
-        {FONT_AWESOME_EMOJI_ANGRY, "angry"},
-        {FONT_AWESOME_EMOJI_CRYING, "crying"},
-        {FONT_AWESOME_EMOJI_LOVING, "loving"},
-        {FONT_AWESOME_EMOJI_EMBARRASSED, "embarrassed"},
-        {FONT_AWESOME_EMOJI_SURPRISED, "surprised"},
-        {FONT_AWESOME_EMOJI_SHOCKED, "shocked"},
-        {FONT_AWESOME_EMOJI_THINKING, "thinking"},
-        {FONT_AWESOME_EMOJI_WINKING, "winking"},
-        {FONT_AWESOME_EMOJI_COOL, "cool"},
-        {FONT_AWESOME_EMOJI_RELAXED, "relaxed"},
-        {FONT_AWESOME_EMOJI_DELICIOUS, "delicious"},
-        {FONT_AWESOME_EMOJI_KISSY, "kissy"},
-        {FONT_AWESOME_EMOJI_CONFIDENT, "confident"},
-        {FONT_AWESOME_EMOJI_SLEEPY, "sleepy"},
-        {FONT_AWESOME_EMOJI_SILLY, "silly"},
-        {FONT_AWESOME_EMOJI_CONFUSED, "confused"}
-    };
     
     // 查找匹配的表情
     std::string_view emotion_view(emotion);
@@ -231,13 +206,6 @@ void Display::SetEmotion(const char* emotion) {
     DisplayLockGuard lock(this);
     if (emotion_label_ == nullptr) {
         return;
-    }
-
-    // 如果找到匹配的表情就显示对应图标，否则显示默认的neutral表情
-    if (it != emotions.end()) {
-        lv_label_set_text(emotion_label_, it->icon);
-    } else {
-        lv_label_set_text(emotion_label_, FONT_AWESOME_EMOJI_NEUTRAL);
     }
 }
 
